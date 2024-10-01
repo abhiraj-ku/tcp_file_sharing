@@ -23,10 +23,10 @@ func handleConnection(conn net.Conn) {
 	userAns := make(chan string)
 
 	go func() {
-		var reponse string
+		var response string
 		fmt.Println("Incoming file , want to accept? (yes/no)")
-		fmt.Scanln(&reponse)
-		userAns <- reponse
+		fmt.Scanln(&response)
+		userAns <- response
 	}()
 
 	// Timeout handling
@@ -91,6 +91,7 @@ func decryptFile(src, dst string) error {
 	defer outFile.Close()
 
 	// decryption logic : compare the hashes of both files based on secretKey (key here)
+
 	// i don't understand a f*ck of it
 	block, err := aes.NewCipher(key)
 	if err != nil {
